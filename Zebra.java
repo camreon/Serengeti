@@ -18,7 +18,7 @@ public class Zebra extends Herbivore {
 	public Zebra(int x, int y, Rectangle bounds) {
 		super(x, y, bounds);
 		
-		image = new ImageIcon("zebra.png"); 
+		image = new ImageIcon(IMGPATH+"zebra.png");
 	}
 	
 	/**
@@ -42,9 +42,7 @@ public class Zebra extends Herbivore {
 	 * @return New animal of same type in same location
 	 */
 	public boolean canReproduceWithAnimal(Animal other) {
-		if (other instanceof Zebra)
-			return true;
-		return false;
+		return other instanceof Zebra;
 	}
 	
 	/**
@@ -55,8 +53,7 @@ public class Zebra extends Herbivore {
 	 */
 	public Animal reproduceWithAnimal(Animal other) {
 		if (gen.nextInt(100) < 10) {
-			Zebra baby = new Zebra(x, y, bounds);
-			return baby;
+			return new Zebra(x, y, bounds);
 		}
 		
 		return null;

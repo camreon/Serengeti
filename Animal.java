@@ -9,7 +9,8 @@ import javax.swing.*;
  * @version 1.0, 4/1/2012
  */
 public abstract class Animal {
-	
+
+    String IMGPATH = "static/";
 	Random gen = new Random();
 	
 	protected int x = gen.nextInt(500) + 50;
@@ -65,9 +66,7 @@ public abstract class Animal {
 	 * @return Whether or not one Animal collides with the other
 	 */
 	public boolean collidesWithAnimal(Animal other) {
-		if (location.intersects(other.location))
-			return true;
-		return false;
+		return location.intersects(other.location);
 	}
 	
 	/**
@@ -92,10 +91,8 @@ public abstract class Animal {
 	 * @return Whether or not Animal has passed max age 
 	 */
 	public boolean isOld() {
-		if (age > 90) 
-			return true;
-		return false;
-	}
+        return age > 90;
+    }
 	
 	/**
 	 * Called when Animal dies
@@ -110,9 +107,7 @@ public abstract class Animal {
 	 * @return Whether or not the animal is dead
 	 */
 	public boolean isDead() {
-		if (health <= 0)
-			return true;
-		return false;
-	}
+        return health <= 0;
+    }
 	
 }

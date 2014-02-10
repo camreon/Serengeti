@@ -18,7 +18,7 @@ public class Lemmings extends Herbivore {
 	public Lemmings(int x, int y, Rectangle bounds) {
 		super(x, y, bounds);
 		
-		image = new ImageIcon("lemmings.png"); 
+		image = new ImageIcon(IMGPATH+"lemmings.png");
 	}
 	
 	/**
@@ -48,9 +48,7 @@ public class Lemmings extends Herbivore {
 	 * @return New animal of same type in same location
 	 */
 	public boolean canReproduceWithAnimal(Animal other) {
-		if (other instanceof Lemmings)
-			return true;
-		return false;
+		return other instanceof Lemmings;
 	}
 	
 	/**
@@ -62,8 +60,7 @@ public class Lemmings extends Herbivore {
 	 */
 	public Animal reproduceWithAnimal(Animal other) {
 		if (gen.nextInt(100) < 80) {
-			Lemmings baby = new Lemmings(x, y, bounds);
-			return baby;
+			return new Lemmings(x, y, bounds);
 		}
 		
 		return null;

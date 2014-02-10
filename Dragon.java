@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  * @version 1.0
  */
 public class Dragon extends Carnivore {
-	/**
+    /**
 	 * Constructor that creates image to be painted
 	 * 
 	 * @param x Horizontal starting location
@@ -20,8 +20,9 @@ public class Dragon extends Carnivore {
 	 */
 	public Dragon(int x, int y, Rectangle bounds) {
 		super(x, y, bounds);
-		
-		image = new ImageIcon("dragon.png"); 
+		//public static String mediaLoc = "static/";
+		//Serengeti.mediaLoc +
+		image = new ImageIcon(IMGPATH+"dragon.png");
 	}
 	
 	/**
@@ -44,9 +45,7 @@ public class Dragon extends Carnivore {
 	 * @return New animal of same type in same location
 	 */
 	public boolean canReproduceWithAnimal(Animal other) { 
-		if (other instanceof Dragon)
-			return true;
-		return false;
+	    return other instanceof Dragon;
 	}
 	
 	/**
@@ -56,10 +55,8 @@ public class Dragon extends Carnivore {
 	 * @return New animal of same type in same location
 	 */
 	public Animal reproduceWithAnimal(Animal other) {
-		if (gen.nextInt(100) < 5) {
-			Dragon baby = new Dragon(x, y, bounds);
-			return baby;
-		}
+		if (gen.nextInt(100) < 5)
+			return new Dragon(x, y, bounds);
 		
 		return null;
 	}
@@ -71,8 +68,6 @@ public class Dragon extends Carnivore {
 	 * @return Whether or not this Animal can eat the other
 	 */
 	public boolean canEatAnimal(Animal other) {
-		if (!(other instanceof Dragon))
-			return true;
-		return false;
-	}
+        return !(other instanceof Dragon);
+    }
 }

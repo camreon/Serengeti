@@ -18,7 +18,7 @@ public class Gazelle extends Herbivore {
 	public Gazelle(int x, int y, Rectangle bounds) {
 		super(x, y, bounds);
 		
-		image = new ImageIcon("gazelle.png"); 
+		image = new ImageIcon(IMGPATH+"gazelle.png");
 	}
 	
 	/**
@@ -42,10 +42,8 @@ public class Gazelle extends Herbivore {
 	 * @return New animal of same type in same location
 	 */
 	public boolean canReproduceWithAnimal(Animal other) {
-		if (other instanceof Gazelle)
-			return true;
-		return false;
-	}
+        return other instanceof Gazelle;
+    }
 	
 	/**
 	 * Reproduction rates are controlled to avoid over population
@@ -54,10 +52,8 @@ public class Gazelle extends Herbivore {
 	 * @return New animal of same type in same location
 	 */
 	public Animal reproduceWithAnimal(Animal other) {
-		if (gen.nextInt(100) < 50) {
-			Gazelle baby = new Gazelle(x, y, bounds);
-			return baby;
-		}
+		if (gen.nextInt(100) < 50)
+			return new Gazelle(x, y, bounds);
 		
 		return null;
 	}

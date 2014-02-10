@@ -19,7 +19,7 @@ public class Lion extends Carnivore {
 	public Lion(int x, int y, Rectangle bounds) {
 		super(x, y, bounds);
 		
-		image = new ImageIcon("lion.png"); 
+		image = new ImageIcon(IMGPATH+"lion.png");
 	}
 	
 	/**
@@ -43,10 +43,8 @@ public class Lion extends Carnivore {
 	 * @return New animal of same type in same location
 	 */
 	public boolean canReproduceWithAnimal(Animal other) {
-		if (other instanceof Lion)
-			return true;
-		return false;
-	}
+        return other instanceof Lion;
+    }
 	
 	/**
 	 * Reproduction rates are controlled to avoid over population
@@ -55,10 +53,8 @@ public class Lion extends Carnivore {
 	 * @return New animal of same type in same location
 	 */
 	public Animal reproduceWithAnimal(Animal other) {
-		if (gen.nextInt(100) < 60) {
-			Lion baby = new Lion(x, y, bounds);
-			return baby;
-		}
+		if (gen.nextInt(100) < 60)
+            return new Lion(x, y, bounds);
 		
 		return null;
 	

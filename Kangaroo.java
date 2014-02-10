@@ -18,7 +18,7 @@ public class Kangaroo extends Herbivore {
 	public Kangaroo(int x, int y, Rectangle bounds) {
 		super(x, y, bounds);
 		
-		image = new ImageIcon("kangaroo.png"); 
+		image = new ImageIcon(IMGPATH+"kangaroo.png");
 	}
 	
 	/**
@@ -49,9 +49,7 @@ public class Kangaroo extends Herbivore {
 	 * @return New animal of same type in same location
 	 */
 	public boolean canReproduceWithAnimal(Animal other) {
-		if (other instanceof Kangaroo)
-			return true;
-		return false;
+		return other instanceof Kangaroo;
 	}
 	
 	/**
@@ -61,10 +59,8 @@ public class Kangaroo extends Herbivore {
 	 * @return New animal of same type in same location
 	 */
 	public Animal reproduceWithAnimal(Animal other) {
-		if (gen.nextInt(100) < 30) {
-			Kangaroo baby = new Kangaroo(x, y, bounds);
-			return baby;
-		}
+		if (gen.nextInt(100) < 30)
+			return new Kangaroo(x, y, bounds);
 		
 		return null;
 	}
